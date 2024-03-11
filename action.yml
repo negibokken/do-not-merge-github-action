@@ -1,14 +1,17 @@
-on:
-  pull_request:
-      - ['opened', 'edited']
-
 name: Check DO NOT MERGE on PR title
+on:
+    pull_request:
+        types: [opened, reopened, edited]
 
 jobs:
-  build:
-    name: Check DO NOT MERGE on PR title
+  comment:
     runs-on: ubuntu-latest
     steps:
-        - name:
-        - run: |
-        echo ${{ github.event.pull_request.title }}
+      - run: |
+          for phrase in "DO NOT MERGE"; do
+            if [[ "${{ github.event.pull_request.title }}" == *"$phrase"* ]]; then
+                echo "PR title includes $phrase"
+                exit 1
+            fi
+          done
+
