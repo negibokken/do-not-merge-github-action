@@ -1,0 +1,14 @@
+on:
+  pull_request:
+      - ['opened', 'edited']
+
+name: Check DO NOT MERGE on PR title
+
+jobs:
+  build:
+    name: Check DO NOT MERGE on PR title
+    runs-on: ubuntu-latest
+    steps:
+        - name:
+        - run: |
+        echo ${{ github.event.pull_request.title }}
