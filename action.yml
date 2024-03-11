@@ -1,4 +1,5 @@
 name: Check DO NOT MERGE on PR title
+description: A very simple GitHub Action to block a PR that contains "DO NOT MERGE" in PR title.
 on:
     pull_request:
         types: [opened, reopened, edited]
